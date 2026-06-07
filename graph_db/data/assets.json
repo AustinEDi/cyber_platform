@@ -1,0 +1,4 @@
+{"data":[
+  {"hostname":"SERVER-01","os":"Windows Server 2019","owner":"ops","department":"IT","criticality":"high"},
+  {"hostname":"WORKSTATION-15","os":"Windows 10","owner":"john.doe","department":"Engineering","criticality":"medium"}
+]}

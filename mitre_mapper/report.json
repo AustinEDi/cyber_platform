@@ -1,0 +1,32 @@
+{
+  "finding": "Malware Emotet detected Exploits CVE-2025-1234 (Critical severity).",
+  "attack_chain": [
+    {
+      "tactic": "execution",
+      "technique_id": "T1059.001",
+      "name": "PowerShell",
+      "description": "Adversaries may abuse PowerShell commands and scripts..."
+    }
+  ],
+  "affected_assets": [],
+  "evidence": [
+    {
+      "type": "IP",
+      "details": "IP address: 185.130.5.10"
+    },
+    {
+      "type": "Malware",
+      "details": "Malware: Emotet"
+    }
+  ],
+  "relationships_used": [
+    "ip:185.130.5.10 -[LINKED_TO]-> malware:Emotet",
+    "malware:Emotet -[EXPLOITS]-> cve:CVE-2025-1234",
+    "malware:Emotet -[USES]-> technique:T1059.001",
+    "threat_actor:APT29 -[USES]-> malware:Emotet"
+  ],
+  "mitigations": [
+    "Enable PowerShell logging, script block logging, constrained language mode."
+  ],
+  "confidence": 60
+}

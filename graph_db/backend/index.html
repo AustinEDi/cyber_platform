@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cyber Decision Intelligence</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="vis-network.min.js"></script>
+</head>
+<body class="dark">
+  <div class="topbar">
+    <h1>🔍 Cyber Decision Intelligence</h1>
+    <input id="search-input" placeholder="Search entities...">
+    <button id="search-btn">Search</button>
+    <button id="login-btn">Login</button>
+  </div>
+  <div class="main-container">
+    <div class="left-panel">
+      <h3>Filters</h3>
+      <select id="entity-filter">
+        <option value="">All</option>
+        <option>Asset</option><option>IP</option><option>Domain</option>
+        <option>CVE</option><option>ThreatActor</option><option>Malware</option>
+        <option>Technique</option>
+      </select>
+      <h3>Asset Lookup</h3>
+      <input id="asset-input" placeholder="Hostname">
+      <button id="asset-lookup">Lookup</button>
+      <h3>Scanners</h3>
+      <button id="scan-port">Port Scan</button>
+      <button id="scan-process">Process Scan</button>
+      <button id="scan-log">Log Watch</button>
+      <div id="search-results"></div>
+    </div>
+    <div class="center-panel">
+      <div id="graph-container"></div>
+    </div>
+    <div class="right-panel">
+      <h3>AI Query</h3>
+      <textarea id="question" placeholder="Ask a question..."></textarea>
+      <button id="ask-btn">Ask AI</button>
+      <button id="mapper-btn">Map Attack Path</button>
+      <div id="ai-response">
+        <h4>Findings</h4><p id="findings"></p>
+        <h4>Evidence</h4><p id="evidence"></p>
+        <h4>Relationships</h4><p id="relationships"></p>
+        <h4>Confidence</h4><p id="confidence"></p>
+        <h4>Countermeasures</h4><p id="countermeasures"></p>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

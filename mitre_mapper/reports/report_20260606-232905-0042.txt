@@ -1,0 +1,25 @@
+============================================================
+MITRE ATT&CK MAPPING REPORT
+============================================================
+
+Finding:
+Malware Emotet detected
+
+Attack Flow:
+  No techniques identified.
+
+Affected Assets:
+
+Evidence:
+  - [IP] IP address: 185.130.5.10
+  - [Malware] Malware: Emotet
+
+Relationships Used:
+  ip:185.130.5.10 -[LINKED_TO]-> malware:Emotet
+  domain:malware-c2.example.com -[CONNECTED_TO]-> ip:185.130.5.10
+
+Mitigations:
+  None found.
+
+Confidence: 70%
+============================================================

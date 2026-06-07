@@ -1,0 +1,30 @@
+============================================================
+MITRE ATT&CK MAPPING REPORT
+============================================================
+
+Finding:
+Attack path identified.
+
+Attack Flow:
+  No techniques identified.
+
+Affected Assets:
+  - SERVER-01
+
+Evidence:
+  - [Event] Firewall Block on SERVER-01: Connection to 185.130.5.10 blocked
+  - [Event] Firewall Block on SERVER-01: Connection to 185.130.5.10 blocked
+  - [Event] Firewall Block on SERVER-01: Connection to 185.130.5.10 blocked
+  - [Event] Firewall Block on SERVER-01: Connection to 185.130.5.10 blocked
+
+Relationships Used:
+  event:da9e6b46-5461-498e-b32c-8d2f90de621b -[OBSERVED_ON]-> asset:SERVER-01
+  event:b13160a9-0e25-4ea0-9cbb-5b0e1d3493c6 -[OBSERVED_ON]-> asset:SERVER-01
+  event:cbd87294-5531-4b60-8e98-465867331b0b -[OBSERVED_ON]-> asset:SERVER-01
+  event:fcad4e89-e065-48c6-854a-900254a68f58 -[OBSERVED_ON]-> asset:SERVER-01
+
+Mitigations:
+  None found.
+
+Confidence: 80%
+============================================================

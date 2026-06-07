@@ -1,0 +1,4 @@
+{"data":[
+  {"timestamp":"2026-06-05T08:30:00Z","source_host":"SERVER-01","user":"SYSTEM","event_type":"Firewall Block","details":"Connection to 185.130.5.10 blocked"},
+  {"timestamp":"2026-06-05T08:35:00Z","source_host":"WORKSTATION-15","user":"john.doe","event_type":"Malware Alert","details":"Emotet signature detected"}
+]}

@@ -1,0 +1,21 @@
+{
+  "finding": "Malware Emotet detected",
+  "attack_chain": [],
+  "affected_assets": [],
+  "evidence": [
+    {
+      "type": "IP",
+      "details": "IP address: 185.130.5.10"
+    },
+    {
+      "type": "Malware",
+      "details": "Malware: Emotet"
+    }
+  ],
+  "relationships_used": [
+    "ip:185.130.5.10 -[LINKED_TO]-> malware:Emotet",
+    "domain:malware-c2.example.com -[CONNECTED_TO]-> ip:185.130.5.10"
+  ],
+  "mitigations": [],
+  "confidence": 70
+}

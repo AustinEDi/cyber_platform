@@ -1,0 +1,815 @@
+[
+  {
+    "key": "technique:T1059.001",
+    "label": "Technique",
+    "properties": {
+      "technique_id": "T1059.001",
+      "name": "PowerShell",
+      "description": "Adversaries may abuse PowerShell commands and scripts...",
+      "tactics": [
+        "execution"
+      ]
+    }
+  },
+  {
+    "key": "technique:T1486",
+    "label": "Technique",
+    "properties": {
+      "technique_id": "T1486",
+      "name": "Data Encrypted for Impact",
+      "description": "Adversaries may encrypt data on target systems...",
+      "tactics": [
+        "impact"
+      ]
+    }
+  },
+  {
+    "key": "technique:T1566.001",
+    "label": "Technique",
+    "properties": {
+      "technique_id": "T1566.001",
+      "name": "Spearphishing Attachment",
+      "description": "Adversaries may send spearphishing emails with malicious attachments...",
+      "tactics": [
+        "initial-access"
+      ]
+    }
+  },
+  {
+    "key": "cve:CVE-2025-1234",
+    "label": "CVE",
+    "properties": {
+      "cve_id": "CVE-2025-1234",
+      "description": "Remote code execution in Windows SMB",
+      "cvss_score": 9.8,
+      "severity": "Critical",
+      "vendor": "Microsoft",
+      "published_date": "2025-05-15"
+    }
+  },
+  {
+    "key": "cve:CVE-2025-5678",
+    "label": "CVE",
+    "properties": {
+      "cve_id": "CVE-2025-5678",
+      "description": "Privilege escalation in Linux kernel",
+      "cvss_score": 7.8,
+      "severity": "High",
+      "vendor": "Linux",
+      "published_date": "2025-06-01"
+    }
+  },
+  {
+    "key": "ip:185.130.5.10",
+    "label": "IP",
+    "properties": {
+      "address": "185.130.5.10"
+    }
+  },
+  {
+    "key": "malware:Emotet",
+    "label": "Malware",
+    "properties": {
+      "name": "Emotet"
+    }
+  },
+  {
+    "key": "domain:malware-c2.example.com",
+    "label": "Domain",
+    "properties": {
+      "name": "malware-c2.example.com"
+    }
+  },
+  {
+    "key": "threat_actor:APT29",
+    "label": "ThreatActor",
+    "properties": {
+      "name": "APT29"
+    }
+  },
+  {
+    "key": "asset:SERVER-01",
+    "label": "Asset",
+    "properties": {
+      "hostname": "SERVER-01",
+      "os": "Windows Server 2019",
+      "owner": "ops",
+      "department": "IT",
+      "criticality": "high"
+    }
+  },
+  {
+    "key": "asset:WORKSTATION-15",
+    "label": "Asset",
+    "properties": {
+      "hostname": "WORKSTATION-15",
+      "os": "Windows 10",
+      "owner": "john.doe",
+      "department": "Engineering",
+      "criticality": "medium"
+    }
+  },
+  {
+    "key": "event:da9e6b46-5461-498e-b32c-8d2f90de621b",
+    "label": "Event",
+    "properties": {
+      "event_id": "da9e6b46-5461-498e-b32c-8d2f90de621b",
+      "timestamp": "2026-06-05T08:30:00Z",
+      "source_host": "SERVER-01",
+      "user": "SYSTEM",
+      "event_type": "Firewall Block",
+      "details": "Connection to 185.130.5.10 blocked"
+    }
+  },
+  {
+    "key": "event:ef894292-f697-4cf0-8f7d-307f006e9c2a",
+    "label": "Event",
+    "properties": {
+      "event_id": "ef894292-f697-4cf0-8f7d-307f006e9c2a",
+      "timestamp": "2026-06-05T08:35:00Z",
+      "source_host": "WORKSTATION-15",
+      "user": "john.doe",
+      "event_type": "Malware Alert",
+      "details": "Emotet signature detected"
+    }
+  },
+  {
+    "key": "event:b13160a9-0e25-4ea0-9cbb-5b0e1d3493c6",
+    "label": "Event",
+    "properties": {
+      "event_id": "b13160a9-0e25-4ea0-9cbb-5b0e1d3493c6",
+      "timestamp": "2026-06-05T08:30:00Z",
+      "source_host": "SERVER-01",
+      "user": "SYSTEM",
+      "event_type": "Firewall Block",
+      "details": "Connection to 185.130.5.10 blocked"
+    }
+  },
+  {
+    "key": "event:b7a66fdf-d82c-444f-bfc1-6f7bb2106dac",
+    "label": "Event",
+    "properties": {
+      "event_id": "b7a66fdf-d82c-444f-bfc1-6f7bb2106dac",
+      "timestamp": "2026-06-05T08:35:00Z",
+      "source_host": "WORKSTATION-15",
+      "user": "john.doe",
+      "event_type": "Malware Alert",
+      "details": "Emotet signature detected"
+    }
+  },
+  {
+    "key": "event:cbd87294-5531-4b60-8e98-465867331b0b",
+    "label": "Event",
+    "properties": {
+      "event_id": "cbd87294-5531-4b60-8e98-465867331b0b",
+      "timestamp": "2026-06-05T08:30:00Z",
+      "source_host": "SERVER-01",
+      "user": "SYSTEM",
+      "event_type": "Firewall Block",
+      "details": "Connection to 185.130.5.10 blocked"
+    }
+  },
+  {
+    "key": "event:e5a8192a-e3b1-4a1d-b69b-2f32c08d056a",
+    "label": "Event",
+    "properties": {
+      "event_id": "e5a8192a-e3b1-4a1d-b69b-2f32c08d056a",
+      "timestamp": "2026-06-05T08:35:00Z",
+      "source_host": "WORKSTATION-15",
+      "user": "john.doe",
+      "event_type": "Malware Alert",
+      "details": "Emotet signature detected"
+    }
+  },
+  {
+    "key": "event:fcad4e89-e065-48c6-854a-900254a68f58",
+    "label": "Event",
+    "properties": {
+      "event_id": "fcad4e89-e065-48c6-854a-900254a68f58",
+      "timestamp": "2026-06-05T08:30:00Z",
+      "source_host": "SERVER-01",
+      "user": "SYSTEM",
+      "event_type": "Firewall Block",
+      "details": "Connection to 185.130.5.10 blocked"
+    }
+  },
+  {
+    "key": "event:a5214fe3-a6b1-4c03-9f9f-59b72549ba04",
+    "label": "Event",
+    "properties": {
+      "event_id": "a5214fe3-a6b1-4c03-9f9f-59b72549ba04",
+      "timestamp": "2026-06-05T08:35:00Z",
+      "source_host": "WORKSTATION-15",
+      "user": "john.doe",
+      "event_type": "Malware Alert",
+      "details": "Emotet signature detected"
+    }
+  },
+  {
+    "key": "event:36a72bb0-75e2-49b1-9e06-a0611e695858",
+    "label": "Event",
+    "properties": {
+      "event_id": "36a72bb0-75e2-49b1-9e06-a0611e695858",
+      "timestamp": "2026-06-06T14:01:17.714618+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "FirewallAlert",
+      "details": "Firewall alert: 2026-06-05T08:30:00Z DROP IN=eth0 OUT= SRC=185.130.5.10 DST=192.168.1.10 PROTO=TCP SPT=443 DPT=445"
+    }
+  },
+  {
+    "key": "asset:firewall",
+    "label": "Asset",
+    "properties": {
+      "hostname": "firewall"
+    }
+  },
+  {
+    "key": "event:3d0b1e71-a22b-4416-a1b0-de55682aa962",
+    "label": "Event",
+    "properties": {
+      "event_id": "3d0b1e71-a22b-4416-a1b0-de55682aa962",
+      "timestamp": "2026-06-06T14:01:17.714698+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "ThreatIntel",
+      "details": "Malicious IP 185.130.5.10 found in log: 2026-06-05T08:30:00Z DROP IN=eth0 OUT= SRC=185.130.5.10 DST=192.168.1.10 PROTO=TCP SPT=443 DPT=445"
+    }
+  },
+  {
+    "key": "event:68f5eda9-11da-4295-915a-5e87e649ca39",
+    "label": "Event",
+    "properties": {
+      "event_id": "68f5eda9-11da-4295-915a-5e87e649ca39",
+      "timestamp": "2026-06-06T14:01:17.714745+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "FirewallAlert",
+      "details": "Firewall alert: 2026-06-05T08:31:00Z DROP IN=eth0 OUT= SRC=10.0.0.5 DST=192.168.1.10 PROTO=TCP SPT=22 DPT=22"
+    }
+  },
+  {
+    "key": "event:aea33e8f-5b83-41ba-ab09-c40072fa6866",
+    "label": "Event",
+    "properties": {
+      "event_id": "aea33e8f-5b83-41ba-ab09-c40072fa6866",
+      "timestamp": "2026-06-06T14:01:17.714787+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "FirewallAlert",
+      "details": "Firewall alert: 2026-06-05T08:32:00Z Failed password for root from 185.130.5.10 port 22 ssh2"
+    }
+  },
+  {
+    "key": "event:ba598f94-1a62-4823-9f8f-e4eb0f917501",
+    "label": "Event",
+    "properties": {
+      "event_id": "ba598f94-1a62-4823-9f8f-e4eb0f917501",
+      "timestamp": "2026-06-06T14:01:17.714819+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "ThreatIntel",
+      "details": "Malicious IP 185.130.5.10 found in log: 2026-06-05T08:32:00Z Failed password for root from 185.130.5.10 port 22 ssh2"
+    }
+  },
+  {
+    "key": "event:511dcc31-d5c5-416e-b24e-fa4e106489f9",
+    "label": "Event",
+    "properties": {
+      "event_id": "511dcc31-d5c5-416e-b24e-fa4e106489f9",
+      "timestamp": "2026-06-06T14:01:17.714854+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "FirewallAlert",
+      "details": "Firewall alert: 2026-06-05T08:33:00Z DROP IN=eth0 OUT= SRC=185.130.5.10 DST=192.168.1.10 PROTO=TCP SPT=8080 DPT=8080"
+    }
+  },
+  {
+    "key": "event:45efb127-1bc2-4317-9e01-df590c66dabc",
+    "label": "Event",
+    "properties": {
+      "event_id": "45efb127-1bc2-4317-9e01-df590c66dabc",
+      "timestamp": "2026-06-06T14:01:17.714883+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "ThreatIntel",
+      "details": "Malicious IP 185.130.5.10 found in log: 2026-06-05T08:33:00Z DROP IN=eth0 OUT= SRC=185.130.5.10 DST=192.168.1.10 PROTO=TCP SPT=8080 DPT=8080"
+    }
+  },
+  {
+    "key": "event:b2a20cc1-5e98-47b5-acf4-de105ae9b02b",
+    "label": "Event",
+    "properties": {
+      "event_id": "b2a20cc1-5e98-47b5-acf4-de105ae9b02b",
+      "timestamp": "2026-06-05T08:30:00Z",
+      "source_host": "SERVER-01",
+      "user": "SYSTEM",
+      "event_type": "Firewall Block",
+      "details": "Connection to 185.130.5.10 blocked"
+    }
+  },
+  {
+    "key": "event:03ec87d8-b4d8-40f7-abdd-33faa92dfbd1",
+    "label": "Event",
+    "properties": {
+      "event_id": "03ec87d8-b4d8-40f7-abdd-33faa92dfbd1",
+      "timestamp": "2026-06-05T08:35:00Z",
+      "source_host": "WORKSTATION-15",
+      "user": "john.doe",
+      "event_type": "Malware Alert",
+      "details": "Emotet signature detected"
+    }
+  },
+  {
+    "key": "event:7fbb61ab-6ceb-46c6-8ba8-fb5639346297",
+    "label": "Event",
+    "properties": {
+      "event_id": "7fbb61ab-6ceb-46c6-8ba8-fb5639346297",
+      "timestamp": "2026-06-06T21:13:43.739768+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "FirewallAlert",
+      "details": "Firewall alert: 2026-06-05T08:30:00Z DROP IN=eth0 OUT= SRC=185.130.5.10 DST=192.168.1.10 PROTO=TCP SPT=443 DPT=445"
+    }
+  },
+  {
+    "key": "event:cfac7c85-117f-44d9-800b-1cbd78657059",
+    "label": "Event",
+    "properties": {
+      "event_id": "cfac7c85-117f-44d9-800b-1cbd78657059",
+      "timestamp": "2026-06-06T21:13:43.739891+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "ThreatIntel",
+      "details": "Malicious IP 185.130.5.10 found in log: 2026-06-05T08:30:00Z DROP IN=eth0 OUT= SRC=185.130.5.10 DST=192.168.1.10 PROTO=TCP SPT=443 DPT=445"
+    }
+  },
+  {
+    "key": "event:87e7c323-67ba-421e-b58d-4464307b201b",
+    "label": "Event",
+    "properties": {
+      "event_id": "87e7c323-67ba-421e-b58d-4464307b201b",
+      "timestamp": "2026-06-06T21:13:43.739974+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "FirewallAlert",
+      "details": "Firewall alert: 2026-06-05T08:31:00Z DROP IN=eth0 OUT= SRC=10.0.0.5 DST=192.168.1.10 PROTO=TCP SPT=22 DPT=22"
+    }
+  },
+  {
+    "key": "event:07f7a8f0-894c-4246-8716-b505031c00f8",
+    "label": "Event",
+    "properties": {
+      "event_id": "07f7a8f0-894c-4246-8716-b505031c00f8",
+      "timestamp": "2026-06-06T21:13:43.740060+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "FirewallAlert",
+      "details": "Firewall alert: 2026-06-05T08:32:00Z Failed password for root from 185.130.5.10 port 22 ssh2"
+    }
+  },
+  {
+    "key": "event:3834cc8c-4a75-4e51-8416-f8a418d950a9",
+    "label": "Event",
+    "properties": {
+      "event_id": "3834cc8c-4a75-4e51-8416-f8a418d950a9",
+      "timestamp": "2026-06-06T21:13:43.740208+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "ThreatIntel",
+      "details": "Malicious IP 185.130.5.10 found in log: 2026-06-05T08:32:00Z Failed password for root from 185.130.5.10 port 22 ssh2"
+    }
+  },
+  {
+    "key": "event:2218858a-1fd1-4652-a71f-eb4acb526a99",
+    "label": "Event",
+    "properties": {
+      "event_id": "2218858a-1fd1-4652-a71f-eb4acb526a99",
+      "timestamp": "2026-06-06T21:13:43.740312+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "FirewallAlert",
+      "details": "Firewall alert: 2026-06-05T08:33:00Z DROP IN=eth0 OUT= SRC=185.130.5.10 DST=192.168.1.10 PROTO=TCP SPT=8080 DPT=8080"
+    }
+  },
+  {
+    "key": "event:bfbdf7bd-cb7b-49fa-bb43-a4445c88187b",
+    "label": "Event",
+    "properties": {
+      "event_id": "bfbdf7bd-cb7b-49fa-bb43-a4445c88187b",
+      "timestamp": "2026-06-06T21:13:43.740391+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "ThreatIntel",
+      "details": "Malicious IP 185.130.5.10 found in log: 2026-06-05T08:33:00Z DROP IN=eth0 OUT= SRC=185.130.5.10 DST=192.168.1.10 PROTO=TCP SPT=8080 DPT=8080"
+    }
+  },
+  {
+    "key": "event:1b7352c7-79fc-4c67-b86a-712af37abca3",
+    "label": "Event",
+    "properties": {
+      "event_id": "1b7352c7-79fc-4c67-b86a-712af37abca3",
+      "timestamp": "2026-06-05T08:30:00Z",
+      "source_host": "SERVER-01",
+      "user": "SYSTEM",
+      "event_type": "Firewall Block",
+      "details": "Connection to 185.130.5.10 blocked"
+    }
+  },
+  {
+    "key": "event:498d86c5-4c3d-43c5-84e1-89a14c0f589e",
+    "label": "Event",
+    "properties": {
+      "event_id": "498d86c5-4c3d-43c5-84e1-89a14c0f589e",
+      "timestamp": "2026-06-05T08:35:00Z",
+      "source_host": "WORKSTATION-15",
+      "user": "john.doe",
+      "event_type": "Malware Alert",
+      "details": "Emotet signature detected"
+    }
+  },
+  {
+    "key": "event:ee0b3551-abd9-4009-863d-70e3f84f4bbb",
+    "label": "Event",
+    "properties": {
+      "event_id": "ee0b3551-abd9-4009-863d-70e3f84f4bbb",
+      "timestamp": "2026-06-06T21:30:54.642367+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "FirewallAlert",
+      "details": "Firewall alert: 2026-06-05T08:30:00Z DROP IN=eth0 OUT= SRC=185.130.5.10 DST=192.168.1.10 PROTO=TCP SPT=443 DPT=445"
+    }
+  },
+  {
+    "key": "event:918f0bbd-d97e-4832-a2a6-37ff7f9b2e4a",
+    "label": "Event",
+    "properties": {
+      "event_id": "918f0bbd-d97e-4832-a2a6-37ff7f9b2e4a",
+      "timestamp": "2026-06-06T21:30:54.642449+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "ThreatIntel",
+      "details": "Malicious IP 185.130.5.10 found in log: 2026-06-05T08:30:00Z DROP IN=eth0 OUT= SRC=185.130.5.10 DST=192.168.1.10 PROTO=TCP SPT=443 DPT=445"
+    }
+  },
+  {
+    "key": "event:a084a640-aadd-42f1-98d8-ffbc122bdc7a",
+    "label": "Event",
+    "properties": {
+      "event_id": "a084a640-aadd-42f1-98d8-ffbc122bdc7a",
+      "timestamp": "2026-06-06T21:30:54.642486+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "FirewallAlert",
+      "details": "Firewall alert: 2026-06-05T08:31:00Z DROP IN=eth0 OUT= SRC=10.0.0.5 DST=192.168.1.10 PROTO=TCP SPT=22 DPT=22"
+    }
+  },
+  {
+    "key": "event:15eb6fdd-5f9e-4f40-958c-09d4c568930e",
+    "label": "Event",
+    "properties": {
+      "event_id": "15eb6fdd-5f9e-4f40-958c-09d4c568930e",
+      "timestamp": "2026-06-06T21:30:54.642516+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "FirewallAlert",
+      "details": "Firewall alert: 2026-06-05T08:32:00Z Failed password for root from 185.130.5.10 port 22 ssh2"
+    }
+  },
+  {
+    "key": "event:89677e03-5ab4-4423-a914-1197f197e713",
+    "label": "Event",
+    "properties": {
+      "event_id": "89677e03-5ab4-4423-a914-1197f197e713",
+      "timestamp": "2026-06-06T21:30:54.642572+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "ThreatIntel",
+      "details": "Malicious IP 185.130.5.10 found in log: 2026-06-05T08:32:00Z Failed password for root from 185.130.5.10 port 22 ssh2"
+    }
+  },
+  {
+    "key": "event:0c0693d5-64d7-4344-9947-dfcaedd6bb75",
+    "label": "Event",
+    "properties": {
+      "event_id": "0c0693d5-64d7-4344-9947-dfcaedd6bb75",
+      "timestamp": "2026-06-06T21:30:54.642597+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "FirewallAlert",
+      "details": "Firewall alert: 2026-06-05T08:33:00Z DROP IN=eth0 OUT= SRC=185.130.5.10 DST=192.168.1.10 PROTO=TCP SPT=8080 DPT=8080"
+    }
+  },
+  {
+    "key": "event:ebae06be-a317-49ed-8db1-e9638f720376",
+    "label": "Event",
+    "properties": {
+      "event_id": "ebae06be-a317-49ed-8db1-e9638f720376",
+      "timestamp": "2026-06-06T21:30:54.642616+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "ThreatIntel",
+      "details": "Malicious IP 185.130.5.10 found in log: 2026-06-05T08:33:00Z DROP IN=eth0 OUT= SRC=185.130.5.10 DST=192.168.1.10 PROTO=TCP SPT=8080 DPT=8080"
+    }
+  },
+  {
+    "key": "event:276d78fc-2696-4647-a3ba-35519284a1ed",
+    "label": "Event",
+    "properties": {
+      "event_id": "276d78fc-2696-4647-a3ba-35519284a1ed",
+      "timestamp": "2026-06-06T21:40:28.377630+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "FirewallAlert",
+      "details": "Firewall alert: 2026-06-05T08:30:00Z DROP IN=eth0 OUT= SRC=185.130.5.10 DST=192.168.1.10 PROTO=TCP SPT=443 DPT=445"
+    }
+  },
+  {
+    "key": "event:8e159455-d7d6-4665-8f56-b815490c4152",
+    "label": "Event",
+    "properties": {
+      "event_id": "8e159455-d7d6-4665-8f56-b815490c4152",
+      "timestamp": "2026-06-06T21:40:28.377690+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "ThreatIntel",
+      "details": "Malicious IP 185.130.5.10 found in log: 2026-06-05T08:30:00Z DROP IN=eth0 OUT= SRC=185.130.5.10 DST=192.168.1.10 PROTO=TCP SPT=443 DPT=445"
+    }
+  },
+  {
+    "key": "event:c94ed6ad-8956-499d-a7c0-b73c60555b22",
+    "label": "Event",
+    "properties": {
+      "event_id": "c94ed6ad-8956-499d-a7c0-b73c60555b22",
+      "timestamp": "2026-06-06T21:40:28.377711+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "FirewallAlert",
+      "details": "Firewall alert: 2026-06-05T08:31:00Z DROP IN=eth0 OUT= SRC=10.0.0.5 DST=192.168.1.10 PROTO=TCP SPT=22 DPT=22"
+    }
+  },
+  {
+    "key": "event:cf0bea80-9a2f-4670-bc47-53962aaf77f6",
+    "label": "Event",
+    "properties": {
+      "event_id": "cf0bea80-9a2f-4670-bc47-53962aaf77f6",
+      "timestamp": "2026-06-06T21:40:28.377726+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "FirewallAlert",
+      "details": "Firewall alert: 2026-06-05T08:32:00Z Failed password for root from 185.130.5.10 port 22 ssh2"
+    }
+  },
+  {
+    "key": "event:858f682b-bf6d-4b5a-89ea-fdc81d63fd64",
+    "label": "Event",
+    "properties": {
+      "event_id": "858f682b-bf6d-4b5a-89ea-fdc81d63fd64",
+      "timestamp": "2026-06-06T21:40:28.377760+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "ThreatIntel",
+      "details": "Malicious IP 185.130.5.10 found in log: 2026-06-05T08:32:00Z Failed password for root from 185.130.5.10 port 22 ssh2"
+    }
+  },
+  {
+    "key": "event:d6819fe8-88c0-4dba-a0ea-3912b8d2c429",
+    "label": "Event",
+    "properties": {
+      "event_id": "d6819fe8-88c0-4dba-a0ea-3912b8d2c429",
+      "timestamp": "2026-06-06T21:40:28.377772+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "FirewallAlert",
+      "details": "Firewall alert: 2026-06-05T08:33:00Z DROP IN=eth0 OUT= SRC=185.130.5.10 DST=192.168.1.10 PROTO=TCP SPT=8080 DPT=8080"
+    }
+  },
+  {
+    "key": "event:dca8d319-26e7-4a94-8c3b-c036dc43ba7b",
+    "label": "Event",
+    "properties": {
+      "event_id": "dca8d319-26e7-4a94-8c3b-c036dc43ba7b",
+      "timestamp": "2026-06-06T21:40:28.377781+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "ThreatIntel",
+      "details": "Malicious IP 185.130.5.10 found in log: 2026-06-05T08:33:00Z DROP IN=eth0 OUT= SRC=185.130.5.10 DST=192.168.1.10 PROTO=TCP SPT=8080 DPT=8080"
+    }
+  },
+  {
+    "key": "event:95aaf003-67b2-4513-ba66-669b370ff1bf",
+    "label": "Event",
+    "properties": {
+      "event_id": "95aaf003-67b2-4513-ba66-669b370ff1bf",
+      "timestamp": "2026-06-05T08:30:00Z",
+      "source_host": "SERVER-01",
+      "user": "SYSTEM",
+      "event_type": "Firewall Block",
+      "details": "Connection to 185.130.5.10 blocked"
+    }
+  },
+  {
+    "key": "event:46490e02-59a8-4c3a-808f-c1976939aece",
+    "label": "Event",
+    "properties": {
+      "event_id": "46490e02-59a8-4c3a-808f-c1976939aece",
+      "timestamp": "2026-06-05T08:35:00Z",
+      "source_host": "WORKSTATION-15",
+      "user": "john.doe",
+      "event_type": "Malware Alert",
+      "details": "Emotet signature detected"
+    }
+  },
+  {
+    "key": "event:45098e4e-f902-422f-92e0-27464a40ee6c",
+    "label": "Event",
+    "properties": {
+      "event_id": "45098e4e-f902-422f-92e0-27464a40ee6c",
+      "timestamp": "2026-06-06T21:46:55.417366+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "FirewallAlert",
+      "details": "Firewall alert: 2026-06-05T08:30:00Z DROP IN=eth0 OUT= SRC=185.130.5.10 DST=192.168.1.10 PROTO=TCP SPT=443 DPT=445"
+    }
+  },
+  {
+    "key": "event:81bc60da-d398-4c1c-9a91-5086c7471ba4",
+    "label": "Event",
+    "properties": {
+      "event_id": "81bc60da-d398-4c1c-9a91-5086c7471ba4",
+      "timestamp": "2026-06-06T21:46:55.417650+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "ThreatIntel",
+      "details": "Malicious IP 185.130.5.10 found in log: 2026-06-05T08:30:00Z DROP IN=eth0 OUT= SRC=185.130.5.10 DST=192.168.1.10 PROTO=TCP SPT=443 DPT=445"
+    }
+  },
+  {
+    "key": "event:37b7d422-eaef-4e43-83c9-2c7f08806a69",
+    "label": "Event",
+    "properties": {
+      "event_id": "37b7d422-eaef-4e43-83c9-2c7f08806a69",
+      "timestamp": "2026-06-06T21:46:55.417677+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "FirewallAlert",
+      "details": "Firewall alert: 2026-06-05T08:31:00Z DROP IN=eth0 OUT= SRC=10.0.0.5 DST=192.168.1.10 PROTO=TCP SPT=22 DPT=22"
+    }
+  },
+  {
+    "key": "event:06e3829d-d43a-4b3c-9813-b89d9c32d9cd",
+    "label": "Event",
+    "properties": {
+      "event_id": "06e3829d-d43a-4b3c-9813-b89d9c32d9cd",
+      "timestamp": "2026-06-06T21:46:55.417693+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "FirewallAlert",
+      "details": "Firewall alert: 2026-06-05T08:32:00Z Failed password for root from 185.130.5.10 port 22 ssh2"
+    }
+  },
+  {
+    "key": "event:d6afcaa0-bcac-41cc-a8d5-95d1f359d383",
+    "label": "Event",
+    "properties": {
+      "event_id": "d6afcaa0-bcac-41cc-a8d5-95d1f359d383",
+      "timestamp": "2026-06-06T21:46:55.417739+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "ThreatIntel",
+      "details": "Malicious IP 185.130.5.10 found in log: 2026-06-05T08:32:00Z Failed password for root from 185.130.5.10 port 22 ssh2"
+    }
+  },
+  {
+    "key": "event:d6e27e00-472a-492e-9fc1-d1ffe7a004a3",
+    "label": "Event",
+    "properties": {
+      "event_id": "d6e27e00-472a-492e-9fc1-d1ffe7a004a3",
+      "timestamp": "2026-06-06T21:46:55.417752+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "FirewallAlert",
+      "details": "Firewall alert: 2026-06-05T08:33:00Z DROP IN=eth0 OUT= SRC=185.130.5.10 DST=192.168.1.10 PROTO=TCP SPT=8080 DPT=8080"
+    }
+  },
+  {
+    "key": "event:e2a012bc-7f79-4b24-82a3-df3aa5cd6fad",
+    "label": "Event",
+    "properties": {
+      "event_id": "e2a012bc-7f79-4b24-82a3-df3aa5cd6fad",
+      "timestamp": "2026-06-06T21:46:55.417761+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "ThreatIntel",
+      "details": "Malicious IP 185.130.5.10 found in log: 2026-06-05T08:33:00Z DROP IN=eth0 OUT= SRC=185.130.5.10 DST=192.168.1.10 PROTO=TCP SPT=8080 DPT=8080"
+    }
+  },
+  {
+    "key": "event:1052dca2-b705-4413-93e5-98b6550c0c3a",
+    "label": "Event",
+    "properties": {
+      "event_id": "1052dca2-b705-4413-93e5-98b6550c0c3a",
+      "timestamp": "2026-06-05T08:30:00Z",
+      "source_host": "SERVER-01",
+      "user": "SYSTEM",
+      "event_type": "Firewall Block",
+      "details": "Connection to 185.130.5.10 blocked"
+    }
+  },
+  {
+    "key": "event:1b52c9c4-c7b6-4987-96a4-bb8969ed0ff9",
+    "label": "Event",
+    "properties": {
+      "event_id": "1b52c9c4-c7b6-4987-96a4-bb8969ed0ff9",
+      "timestamp": "2026-06-05T08:35:00Z",
+      "source_host": "WORKSTATION-15",
+      "user": "john.doe",
+      "event_type": "Malware Alert",
+      "details": "Emotet signature detected"
+    }
+  },
+  {
+    "key": "event:f885c75b-4eec-4740-b07b-6886bf92c6de",
+    "label": "Event",
+    "properties": {
+      "event_id": "f885c75b-4eec-4740-b07b-6886bf92c6de",
+      "timestamp": "2026-06-06T21:49:56.876221+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "FirewallAlert",
+      "details": "Firewall alert: 2026-06-05T08:30:00Z DROP IN=eth0 OUT= SRC=185.130.5.10 DST=192.168.1.10 PROTO=TCP SPT=443 DPT=445"
+    }
+  },
+  {
+    "key": "event:3a2fdabe-78a4-43b5-ab3e-112ede31c5f4",
+    "label": "Event",
+    "properties": {
+      "event_id": "3a2fdabe-78a4-43b5-ab3e-112ede31c5f4",
+      "timestamp": "2026-06-06T21:49:56.876270+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "ThreatIntel",
+      "details": "Malicious IP 185.130.5.10 found in log: 2026-06-05T08:30:00Z DROP IN=eth0 OUT= SRC=185.130.5.10 DST=192.168.1.10 PROTO=TCP SPT=443 DPT=445"
+    }
+  },
+  {
+    "key": "event:b3a744bb-8bc1-4df9-9d4d-450f382e762b",
+    "label": "Event",
+    "properties": {
+      "event_id": "b3a744bb-8bc1-4df9-9d4d-450f382e762b",
+      "timestamp": "2026-06-06T21:49:56.876287+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "FirewallAlert",
+      "details": "Firewall alert: 2026-06-05T08:31:00Z DROP IN=eth0 OUT= SRC=10.0.0.5 DST=192.168.1.10 PROTO=TCP SPT=22 DPT=22"
+    }
+  },
+  {
+    "key": "event:f04d62f0-cdef-459c-a7b7-8d2ff844cb8a",
+    "label": "Event",
+    "properties": {
+      "event_id": "f04d62f0-cdef-459c-a7b7-8d2ff844cb8a",
+      "timestamp": "2026-06-06T21:49:56.876302+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "FirewallAlert",
+      "details": "Firewall alert: 2026-06-05T08:32:00Z Failed password for root from 185.130.5.10 port 22 ssh2"
+    }
+  },
+  {
+    "key": "event:8dbac05c-838e-4778-a4bf-018d18bcc7e5",
+    "label": "Event",
+    "properties": {
+      "event_id": "8dbac05c-838e-4778-a4bf-018d18bcc7e5",
+      "timestamp": "2026-06-06T21:49:56.876331+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "ThreatIntel",
+      "details": "Malicious IP 185.130.5.10 found in log: 2026-06-05T08:32:00Z Failed password for root from 185.130.5.10 port 22 ssh2"
+    }
+  },
+  {
+    "key": "event:a6558e5d-e0ec-4ad6-ad6e-af35d872bb49",
+    "label": "Event",
+    "properties": {
+      "event_id": "a6558e5d-e0ec-4ad6-ad6e-af35d872bb49",
+      "timestamp": "2026-06-06T21:49:56.876344+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "FirewallAlert",
+      "details": "Firewall alert: 2026-06-05T08:33:00Z DROP IN=eth0 OUT= SRC=185.130.5.10 DST=192.168.1.10 PROTO=TCP SPT=8080 DPT=8080"
+    }
+  },
+  {
+    "key": "event:9e89ac85-ee11-457e-bb4f-f4715634a15b",
+    "label": "Event",
+    "properties": {
+      "event_id": "9e89ac85-ee11-457e-bb4f-f4715634a15b",
+      "timestamp": "2026-06-06T21:49:56.876354+00:00",
+      "source_host": "firewall",
+      "user": "",
+      "event_type": "ThreatIntel",
+      "details": "Malicious IP 185.130.5.10 found in log: 2026-06-05T08:33:00Z DROP IN=eth0 OUT= SRC=185.130.5.10 DST=192.168.1.10 PROTO=TCP SPT=8080 DPT=8080"
+    }
+  }
+]

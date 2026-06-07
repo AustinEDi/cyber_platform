@@ -1,0 +1,7 @@
+Question: What malware is linked to 185.130.5.10?
+Findings: Findings: No AI available. Graph context shows 15 nodes and 2 edges.
+Evidence: See graph
+Relationships Used: See graph
+Confidence: 50%
+Countermeasures: None
+Confidence: 70%

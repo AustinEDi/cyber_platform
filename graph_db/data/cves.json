@@ -1,0 +1,4 @@
+{"data":[
+  {"cve_id":"CVE-2025-1234","description":"Remote code execution in Windows SMB","cvss_score":9.8,"severity":"Critical","vendor":"Microsoft","published_date":"2025-05-15"},
+  {"cve_id":"CVE-2025-5678","description":"Privilege escalation in Linux kernel","cvss_score":7.8,"severity":"High","vendor":"Linux","published_date":"2025-06-01"}
+]}

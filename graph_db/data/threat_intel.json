@@ -1,0 +1,6 @@
+{"data":[
+  {"type":"ip","value":"185.130.5.10","relationships":[{"target":"Emotet","type":"LINKED_TO"}]},
+  {"type":"domain","value":"malware-c2.example.com","relationships":[{"target":"185.130.5.10","type":"CONNECTED_TO"}]},
+  {"type":"malware","value":"Emotet","relationships":[{"target":"CVE-2025-1234","type":"EXPLOITS"},{"target":"T1059.001","type":"USES"}]},
+  {"type":"threat_actor","value":"APT29","relationships":[{"target":"Emotet","type":"USES"}]}
+]}

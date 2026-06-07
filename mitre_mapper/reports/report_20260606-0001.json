@@ -1,0 +1,33 @@
+{
+  "finding": "Attack path identified.",
+  "attack_chain": [],
+  "affected_assets": [
+    "SERVER-01"
+  ],
+  "evidence": [
+    {
+      "type": "Event",
+      "details": "Firewall Block on SERVER-01: Connection to 185.130.5.10 blocked"
+    },
+    {
+      "type": "Event",
+      "details": "Firewall Block on SERVER-01: Connection to 185.130.5.10 blocked"
+    },
+    {
+      "type": "Event",
+      "details": "Firewall Block on SERVER-01: Connection to 185.130.5.10 blocked"
+    },
+    {
+      "type": "Event",
+      "details": "Firewall Block on SERVER-01: Connection to 185.130.5.10 blocked"
+    }
+  ],
+  "relationships_used": [
+    "event:da9e6b46-5461-498e-b32c-8d2f90de621b -[OBSERVED_ON]-> asset:SERVER-01",
+    "event:b13160a9-0e25-4ea0-9cbb-5b0e1d3493c6 -[OBSERVED_ON]-> asset:SERVER-01",
+    "event:cbd87294-5531-4b60-8e98-465867331b0b -[OBSERVED_ON]-> asset:SERVER-01",
+    "event:fcad4e89-e065-48c6-854a-900254a68f58 -[OBSERVED_ON]-> asset:SERVER-01"
+  ],
+  "mitigations": [],
+  "confidence": 80
+}

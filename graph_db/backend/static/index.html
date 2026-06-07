@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyber Decision Intelligence</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/vis-network.min.js"></script>
+</head>
+<body class="light">
+
+<!-- Status bar -->
+<div id="statusBar" style="background:#f0f4ff;color:#1e3a8a;padding:6px 12px;font-size:13px;border-bottom:1px solid #bfdbfe;">
+  Initialising...
+</div>
+
+<!-- Header -->
+<header class="topbar">
+  <h1 class="logo">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    Cyber Decision Intelligence
+  </h1>
+  <div class="search-bar">
+    <input id="searchInput" placeholder="Search entities (IP, hostname, technique…)">
+    <button id="searchBtn" class="icon-btn" onclick="doSearch()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    </button>
+  </div>
+  <div class="threat-metrics">
+    <div class="metric-card"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg><div><strong>Assets</strong><br><span id="metricAssets">0</span></div></div>
+    <div class="metric-card"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><div><strong>CVEs</strong><br><span id="metricCVEs">0</span></div></div>
+    <div class="metric-card"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg><div><strong>Techniques</strong><br><span id="metricTechniques">0</span></div></div>
+    <div class="metric-card"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg><div><strong>Threat Actors</strong><br><span id="metricThreatActors">0</span></div></div>
+    <div class="metric-card alert"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><div><strong>Alerts</strong><br><span id="metricAlerts">0</span></div></div>
+  </div>
+  <button id="loginBtn" class="outline-btn" onclick="loginUser()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg> Login</button>
+</header>
+
+<div class="workspace">
+  <aside class="left-panel">
+    <section class="panel-section"><h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21l-6-6m2-5a7 7 0 1 1-14 0 7 7 0 0 1 14 0z"/></svg> Asset Lookup</h3>
+      <input id="assetLookupInput" placeholder="Hostname (e.g. SERVER-01)">
+      <button id="assetLookupBtn" class="primary-btn full-width" onclick="lookupAsset()">Lookup</button>
+    </section>
+    <section class="panel-section"><h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Recent Searches</h3><div id="recentSearches"></div></section>
+    <section class="panel-section"><h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Scanners</h3>
+      <button id="scanPort" class="scanner-btn" onclick="runScanner('port')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Port Scan</button>
+      <div id="scannerPortStatus" class="scanner-status"></div>
+      <button id="scanProcess" class="scanner-btn" onclick="runScanner('process')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Process Scan</button>
+      <div id="scannerProcessStatus" class="scanner-status"></div>
+      <button id="scanLog" class="scanner-btn" onclick="runScanner('log')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> Log Watch</button>
+      <div id="scannerLogStatus" class="scanner-status"></div>
+    </section>
+  </aside>
+  <main class="center-panel">
+    <div class="tabs">
+      <button class="tab active" data-tab="investigationGraph" onclick="switchTab('investigationGraph')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10"/></svg> Graph</button>
+      <button class="tab" data-tab="mitreGraph" onclick="switchTab('mitreGraph')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg> MITRE Map</button>
+      <button class="tab" data-tab="timeline" onclick="switchTab('timeline')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg> Timeline</button>
+    </div>
+    <div class="tab-content active" id="tab-investigationGraph">
+      <div id="graphContainer" class="graph-canvas" style="border:1px solid #bfdbfe; min-height:500px; height:100%; width:100%; background:#fff;"></div>
+      <div id="graphLegend" class="legend"><span class="legend-item"><span class="dot asset"></span> Asset</span><span class="legend-item"><span class="dot ip"></span> IP</span><span class="legend-item"><span class="dot malware"></span> Malware</span><span class="legend-item"><span class="dot cve"></span> CVE</span><span class="legend-item"><span class="dot technique"></span> Technique</span><span class="legend-item"><span class="dot event"></span> Event</span></div>
+    </div>
+    <div class="tab-content" id="tab-mitreGraph"><div id="mitreGraphContainer" class="graph-canvas"></div><div id="mitreHeatmap" class="heatmap"></div></div>
+    <div class="tab-content" id="tab-timeline"><div id="timelineContainer" class="timeline-list"></div></div>
+  </main>
+  <aside class="right-panel">
+    <section class="panel-section"><h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> AI Investigation Notebook</h3>
+      <textarea id="aiQuestion" placeholder="Ask a question..."></textarea>
+      <div class="ai-buttons">
+        <button id="askAiBtn" class="primary-btn" onclick="askAIFromInput()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Ask AI</button>
+        <button id="mapperBtn" class="secondary-btn" onclick="mapSelectedNode()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> Map Attack Path</button>
+      </div>
+      <div id="aiStatus" class="status-text"></div>
+    </section>
+    <section class="panel-section" id="investigationNotebook"></section>
+    <section class="panel-section"><h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Report Centre</h3>
+      <div class="report-buttons">
+        <button id="exportJsonBtn" class="outline-btn" onclick="exportJSON()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/></svg> Export JSON</button>
+        <button id="exportEvidenceBtn" class="outline-btn" onclick="exportEvidence()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/></svg> Export Evidence</button>
+      </div>
+    </section>
+  </aside>
+</div>
+
+<!-- Node Intelligence Overlay -->
+<div id="nodeIntelligenceOverlay" class="overlay hidden">
+  <div class="node-intel-card">
+    <h3 id="nodeIntelTitle"></h3>
+    <div id="nodeIntelDetails"></div>
+    <div class="node-intel-actions">
+      <button class="primary-btn" onclick="expandSelectedNode()">Expand</button>
+      <button class="secondary-btn" onclick="mapSelectedNode()">Map MITRE</button>
+      <button class="secondary-btn" onclick="aiAnalyzeSelectedNode()">AI Analyze</button>
+    </div>
+    <button class="outline-btn" onclick="document.getElementById('nodeIntelligenceOverlay').classList.add('hidden')">Close</button>
+  </div>
+</div>
+
+<!-- Inline JavaScript – ensures graph loads -->
+<script>
+// === Global State ===
+let token = '';
+let mainNetwork, mitreNetwork;
+let selectedNode = null;
+let eventsTimeline = [];
+let investigationCount = 0;
+let nodeCounts = { assets:0, cves:0, techniques:0, threatActors:0, alerts:0 };
+
+function authHeaders() {
+  return token ? { 'Authorization': `Bearer ${token}` } : {};
+}
+
+async function loginUser() {
+  const uname = prompt('Username:');
+  const pwd = prompt('Password:');
+  if (!uname || !pwd) return;
+  const res = await fetch('/token', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:`username=${encodeURIComponent(uname)}&password=${encodeURIComponent(pwd)}` });
+  const data = await res.json();
+  if (data.access_token) {
+    token = data.access_token;
+    document.getElementById('loginBtn').innerText = '✅ Authenticated';
+  } else alert('Login failed');
+}
+
+async function lookupAsset() {
+  const host = document.getElementById('assetLookupInput').value.trim();
+  if (host) await expandNode(`Asset:hostname=${host}`);
+}
+
+async function doSearch() {
+  const q = document.getElementById('searchInput').value.trim();
+  if (!q) return;
+  const res = await fetch(`/graph/search?q=${encodeURIComponent(q)}`, { headers: authHeaders() });
+  const results = await res.json();
+  document.getElementById('recentSearches').innerHTML = results.map(r => {
+    const key = Object.values(r.properties)[0] || '?';
+    return `<div class="search-item" onclick="expandNode('${r.label}:${key}')">${r.label}: ${key}</div>`;
+  }).join('');
+}
+
+function askAIFromInput() {
+  const q = document.getElementById('aiQuestion').value.trim();
+  if (q) askAI(q);
+}
+
+async function mapSelectedNode() {
+  if (!selectedNode) { alert('Click a node first.'); return; }
+  await runMapper(selectedNode);
+}
+
+function expandSelectedNode() { if (selectedNode) expandNode(selectedNode); }
+function aiAnalyzeSelectedNode() {
+  if (selectedNode) {
+    document.getElementById('aiQuestion').value = `Analyze ${selectedNode}`;
+    askAI(document.getElementById('aiQuestion').value);
+  }
+}
+
+async function runScanner(type) {
+  const cap = type.charAt(0).toUpperCase() + type.slice(1);
+  const statusEl = document.getElementById('scanner' + cap + 'Status');
+  if (statusEl) { statusEl.classList.add('show'); statusEl.innerHTML = 'Running...'; }
+  try {
+    const res = await fetch('/ui/scanner', { method:'POST', headers: { ...authHeaders(), 'Content-Type':'application/json' }, body: JSON.stringify({ scanner: type }) });
+    const result = await res.json();
+    if (statusEl) statusEl.innerHTML = `✅ ${result.events?.length || 0} events.`;
+  } catch(e) { if (statusEl) statusEl.innerHTML = `❌ ${e.message}`; }
+}
+
+function exportJSON() {
+  const notebook = document.getElementById('investigationNotebook');
+  if (!notebook.children.length) return alert('No investigations.');
+  const data = Array.from(notebook.children).map(c => c.innerText);
+  const blob = new Blob([JSON.stringify(data)], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'investigation.json'; a.click();
+}
+
+function exportEvidence() {
+  const blob = new Blob([JSON.stringify(eventsTimeline)], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'evidence.json'; a.click();
+}
+
+function switchTab(tabName) {
+  document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  document.getElementById('tab-' + tabName).classList.add('active');
+  document.querySelector(`.tab[data-tab="${tabName}"]`).classList.add('active');
+  if (tabName === 'investigationGraph' && mainNetwork) mainNetwork.redraw();
+  else if (tabName === 'mitreGraph' && mitreNetwork) mitreNetwork.redraw();
+}
+
+const nodeColors = {
+  Asset: { background: '#1e3a8a', border: '#1e40af' },
+  IP: { background: '#d97706', border: '#b45309' },
+  Domain: { background: '#d97706', border: '#b45309' },
+  CVE: { background: '#c2410c', border: '#9a3412' },
+  ThreatActor: { background: '#b91c1c', border: '#991b1b' },
+  Malware: { background: '#b91c1c', border: '#991b1b' },
+  Technique: { background: '#6d28d9', border: '#5b21b6' },
+  Event: { background: '#0f766e', border: '#115e59' },
+  User: { background: '#0284c7', border: '#0369a1' }
+};
+
+async function expandNode(nodeId) {
+  try {
+    const res = await fetch(`/graph/expand?node_id=${encodeURIComponent(nodeId)}`, { headers: authHeaders() });
+    const json = await res.json();
+    if (!mainNetwork) return;
+    json.nodes.forEach(n => {
+      const colors = nodeColors[n.label] || { background: '#aaa', border: '#888' };
+      mainNetwork.body.data.nodes.update({
+        id: n.id,
+        label: `${n.label}\n${n.properties.hostname || n.properties.name || n.properties.address || n.properties.cve_id || n.properties.technique_id || ''}`,
+        color: colors
+      });
+      if (n.label === 'Event') {
+        const ev = n.properties;
+        if (!eventsTimeline.find(e => e.id === n.id)) {
+          eventsTimeline.push({ id: n.id, time: ev.timestamp || new Date().toISOString(), type: ev.event_type || 'Unknown', details: ev.details || '' });
+        }
+      }
+    });
+    json.edges.forEach(e => mainNetwork.body.data.edges.update({ from: e.from, to: e.to, label: e.label }));
+    updateMetrics();
+    renderTimeline();
+  } catch(err) { console.error(err); }
+}
+
+async function askAI(question) {
+  const res = await fetch('/ui/ai', { method:'POST', headers: { ...authHeaders(), 'Content-Type':'application/json' }, body: JSON.stringify({ question, no_llm: false, model: 'tinyllama' }) });
+  const data = await res.json();
+  investigationCount++;
+  const notebook = document.getElementById('investigationNotebook');
+  const card = document.createElement('div');
+  card.className = 'investigation-card';
+  card.innerHTML = `<h4>Investigation #${investigationCount}</h4><p><b>Q:</b> ${question}</p><p><b>Findings:</b> ${data.findings||''}</p><p><b>Confidence:</b> ${data.confidence||0}%</p>`;
+  notebook.prepend(card);
+}
+
+async function runMapper(nodeId) {
+  const res = await fetch('/ui/mapper', { method:'POST', headers: { ...authHeaders(), 'Content-Type':'application/json' }, body: JSON.stringify({ node_id: nodeId, depth: 4 }) });
+  const report = await res.json();
+  investigationCount++;
+  const notebook = document.getElementById('investigationNotebook');
+  const card = document.createElement('div');
+  card.className = 'investigation-card';
+  card.innerHTML = `<h4>MITRE Report #${investigationCount}</h4><p><b>Finding:</b> ${report.finding||''}</p><p><b>Confidence:</b> ${report.confidence||0}%</p>`;
+  notebook.prepend(card);
+  if (typeof vis !== 'undefined') {
+    const container = document.getElementById('mitreGraphContainer');
+    if (!container) return;
+    const nodes2 = new vis.DataSet([]);
+    const edges2 = new vis.DataSet([]);
+    let prev = null;
+    (report.attack_chain || []).forEach((step, i) => {
+      const id = `t${i}`;
+      nodes2.add({ id, label: `${step.tactic}\n${step.name}`, color: { background: '#6d28d9', border: '#5b21b6' } });
+      if (prev) edges2.add({ from: prev, to: id });
+      prev = id;
+    });
+    if (mitreNetwork) mitreNetwork.destroy();
+    mitreNetwork = new vis.Network(container, { nodes: nodes2, edges: edges2 }, { physics: { solver: 'forceAtlas2Based' } });
+    document.querySelector('.tab[data-tab="mitreGraph"]').click();
+  }
+}
+
+function renderTimeline() {
+  const tl = document.getElementById('timelineContainer');
+  if (!tl) return;
+  tl.innerHTML = eventsTimeline.map(e => `<div class="timeline-item"><span class="timeline-time">${new Date(e.time).toLocaleTimeString()}</span><div><strong>${e.type}</strong><br>${e.details}</div></div>`).join('');
+}
+
+function updateMetrics() {
+  document.getElementById('metricAssets').innerText = nodeCounts.assets;
+  document.getElementById('metricCVEs').innerText = nodeCounts.cves;
+  document.getElementById('metricTechniques').innerText = nodeCounts.techniques;
+  document.getElementById('metricThreatActors').innerText = nodeCounts.threatActors;
+  document.getElementById('metricAlerts').innerText = nodeCounts.alerts;
+}
+
+// Initialize graph as soon as possible
+(function initGraph() {
+  if (typeof vis === 'undefined') {
+    document.getElementById('statusBar').innerHTML = '❌ vis-network not loaded';
+    return;
+  }
+  const container = document.getElementById('graphContainer');
+  if (!container) return;
+  if (container.clientHeight === 0) {
+    setTimeout(initGraph, 200);
+    return;
+  }
+  try {
+    const nodes = new vis.DataSet([]);
+    const edges = new vis.DataSet([]);
+    mainNetwork = new vis.Network(container, { nodes, edges }, {
+      nodes: { shape:'dot', size:18, font:{color:'#1e293b',size:11}, borderWidth:2 },
+      edges: { arrows:{to:{enabled:true}}, color:'#94a3b8', width:1.5, smooth:true, font:{color:'#475569',size:9,align:'top'} },
+      physics: { solver:'forceAtlas2Based' },
+      interaction: { hover:true, multiselect:true }
+    });
+    mainNetwork.on('doubleClick', params => { if (params.nodes.length) expandNode(params.nodes[0]); });
+    mainNetwork.on('click', params => {
+      if (params.nodes.length) {
+        selectedNode = params.nodes[0];
+        const nodeObj = nodes.get(selectedNode);
+        if (nodeObj) {
+          document.getElementById('nodeIntelTitle').innerText = nodeObj.label.replace('\n',' ');
+          document.getElementById('nodeIntelDetails').innerHTML = `<b>Type:</b> ${nodeObj.label.split('\n')[0]}<br><pre>${JSON.stringify(nodeObj,null,2)}</pre>`;
+          document.getElementById('nodeIntelligenceOverlay').classList.remove('hidden');
+        }
+      }
+    });
+    document.getElementById('statusBar').innerHTML = '✅ Graph ready – login to start';
+  } catch(e) {
+    document.getElementById('statusBar').innerHTML = '❌ Graph error: ' + e.message;
+  }
+})();
+</script>
+</body>
+</html>

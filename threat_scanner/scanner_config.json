@@ -1,0 +1,21 @@
+{
+  "port_scanner": {
+    "targets": ["localhost", "SERVER-01"],
+    "ports": [22, 80, 443, 445, 3389, 8080],
+    "severity_by_port": {
+      "445": "high",
+      "3389": "medium"
+    }
+  },
+  "process_scanner": {
+    "suspicious_names": ["nc", "netcat", "mimikatz", "reverse_shell", "powershell_encoded"]
+  },
+  "log_watcher": {
+    "log_file": "data/sample_firewall.log",
+    "patterns": {
+      "DROP": "medium",
+      "Failed password": "low"
+    },
+    "malicious_ips": ["185.130.5.10"]
+  }
+}

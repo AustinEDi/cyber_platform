@@ -1,0 +1,5 @@
+{"data":[
+  {"technique_id":"T1059.001","name":"PowerShell","description":"Adversaries may abuse PowerShell commands and scripts...","tactics":["execution"]},
+  {"technique_id":"T1486","name":"Data Encrypted for Impact","description":"Adversaries may encrypt data on target systems...","tactics":["impact"]},
+  {"technique_id":"T1566.001","name":"Spearphishing Attachment","description":"Adversaries may send spearphishing emails with malicious attachments...","tactics":["initial-access"]}
+]}

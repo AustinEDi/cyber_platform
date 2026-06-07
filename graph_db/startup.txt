@@ -1,0 +1,14 @@
+To run backend server
+
+cd ~/projects/cyber_platform/graph_db/backend
+pkill -f uvicorn   # kill any old process
+python -m uvicorn main:app --host 0.0.0.0 --port 8000 &
+disown
+sleep 6   # wait for server to start
+
+cd ~/projects/cyber_platform/graph_db
+graphdb ingest mitre data/mitre_attack.json
+graphdb ingest cve data/cves.json
+graphdb ingest threat data/threat_intel.json
+graphdb ingest assets data/assets.json
+graphdb ingest events data/events.json

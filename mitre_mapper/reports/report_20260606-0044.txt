@@ -1,0 +1,27 @@
+============================================================
+MITRE ATT&CK MAPPING REPORT
+============================================================
+
+Finding:
+Malware Emotet detected Exploits CVE-2025-1234 (Critical severity).
+
+Attack Flow:
+  [execution] PowerShell (T1059.001)
+
+Affected Assets:
+
+Evidence:
+  - [IP] IP address: 185.130.5.10
+  - [Malware] Malware: Emotet
+
+Relationships Used:
+  ip:185.130.5.10 -[LINKED_TO]-> malware:Emotet
+  malware:Emotet -[EXPLOITS]-> cve:CVE-2025-1234
+  malware:Emotet -[USES]-> technique:T1059.001
+  threat_actor:APT29 -[USES]-> malware:Emotet
+
+Mitigations:
+  1. Enable PowerShell logging, script block logging, constrained language mode.
+
+Confidence: 60%
+============================================================
